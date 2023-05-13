@@ -14,11 +14,12 @@ module "loadbalancer_sg" {
   tags = local.common_tags
 
   # Open to CIDRs blocks (rule or from_port+to_port+protocol+description)
-  ingress_with_cidr_blocks = [
+  ingress_with_cidr_blocks = [ #This was added b/c we had two listeners and they are on a different port 80 and 81.
+    #The we use Open to CIDRs blocks (rule or from_port+to_port+protocol+description) to add more rule.
     {
       from_port   = 81
       to_port     = 81
-      protocol    = 6
+      protocol    = 6 #This 6 represents TCP
       description = "Allow Port 81 from internet"
       cidr_blocks = "0.0.0.0/0"
     },

@@ -111,7 +111,7 @@ module "alb" {
  
   # HTTPS Listener Rules
   https_listener_rules = [
-    # Rule-1: app1.devopsincloud.com should go to App1 EC2 Instances
+    # Rule-1: app1.wiz-obi.com should go to App1 EC2 Instances
     { 
       https_listener_index = 0
       actions = [
@@ -123,9 +123,10 @@ module "alb" {
       conditions = [{
         #path_patterns = ["/app1*"]
         host_headers = [var.app1_dns_name]
+        #The host_headers is a list, you can add multiple element in the list
       }]
     },
-    # Rule-2: app2.devopsincloud.com should go to App2 EC2 Instances    
+    # Rule-2: app2.wiz-obi.com should go to App2 EC2 Instances    
     {
       https_listener_index = 0
       actions = [

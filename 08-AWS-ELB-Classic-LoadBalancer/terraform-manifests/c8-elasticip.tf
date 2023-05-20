@@ -12,5 +12,5 @@ resource "aws_eip" "bastion_eip" {
     working_dir = "local-exec-output-files/"
     when = destroy
     #on_failure = continue
-  }  
+  }
 }

@@ -38,6 +38,6 @@ module "elb" {
   instances           = [
     module.ec2_private.id[0], #THE ELB is targeting our instances in the private subnet and resolving traffic to them via dns resolution.
     module.ec2_private.id[1]
-  ]
+  ] #we can add depends_on here but it cant be used all the time b/c 95% of the time terraform handles this.
   tags = local.common_tags
 }
